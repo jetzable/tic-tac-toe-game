@@ -3,34 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript games</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/50a1a0852a.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <header>
+    <a href="http://games.jetzable.com/">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Games</span>
+    </a>
+    <a href="http://jetzable.com/">
+      <i class="fa-solid fa-id-card"></i>
+      <span>jetzable.com</span>
+    </a>
+    <a href="https://animated.jetzable.com/">
+      <i class="fa-solid fa-file-code"></i>
+      <span>AnimeJs examples</span>
+    </a>
+    <a href="https://github.com/jetzable/tic-tac-toe-game.git" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      <span style="margin-left: 8px;">Games Code here</span>
+    </a>
+  </header>
   <!-- Tic Tac Toe Game -->
   <section class="tic-tac-toe-container">
-    <a class="code-ref" href="https://github.com/jetzable/tic-tac-toe-game.git" target="_blank">
-      <i class="fa-brands fa-github"></i>
-      <span style="margin-left: 8px;">Code here</span>
-      </a>
-    <h1 class="game--title">Tic Tac Toe</h1>
-    <div class="game--container">
-      <div data-cell-index="0" class="cell"></div>
-      <div data-cell-index="1" class="cell"></div>
-      <div data-cell-index="2" class="cell"></div>
-      <div data-cell-index="3" class="cell"></div>
-      <div data-cell-index="4" class="cell"></div>
-      <div data-cell-index="5" class="cell"></div>
-      <div data-cell-index="6" class="cell"></div>
-      <div data-cell-index="7" class="cell"></div>
-      <div data-cell-index="8" class="cell"></div>
+    <div>
+      <h1 class="game--title">Tic Tac Toe</h1>
+      <div class="game--container">
+        <div data-cell-index="0" class="cell"></div>
+        <div data-cell-index="1" class="cell"></div>
+        <div data-cell-index="2" class="cell"></div>
+        <div data-cell-index="3" class="cell"></div>
+        <div data-cell-index="4" class="cell"></div>
+        <div data-cell-index="5" class="cell"></div>
+        <div data-cell-index="6" class="cell"></div>
+        <div data-cell-index="7" class="cell"></div>
+        <div data-cell-index="8" class="cell"></div>
+      </div>
     </div>
-    <h2 class="game--status"></h2>
-    <button class="game--restart">Restart Game</button>
+    <div class="game--controls">
+      <h2 class="game--status"></h2>
+      <button class="game--restart">Restart Game</button>
+    </div>
+  </section>
+  <section class="snake-container">
+    <h1 class="game--title">Snake game</h1>
+    <div class="game-area">
+      <canvas id="snake" width="600" height="360" tabindex="1"></canvas>
+      <div class="overlay">
+        <p class="game-msg"></p>
+        <p id="finalScore"></p>
+        <div class="buttons">
+          <div id="startBtn" class="game-btn">Start Game</div>
+          <div id="resumeBtn" class="game-btn hidden">Resume</div>
+        </div>
+        <div class="difficulty">
+          <p>Game difficulty</p>
+          <div>
+            <div class="radio-field">
+              <input type="radio" name="difficulty" id="radioEasy" value="easy">
+              <label for="radioEasy">Easy</label>
+            </div>
+            <div class="radio-field">
+              <input type="radio" name="difficulty" id="radioNormal" value="normal" checked>
+              <label for="radioNormal">Normal</label>
+            </div>
+            <div class="radio-field">
+              <input type="radio" name="difficulty" id="radioHard" value="hard">
+              <label for="radioHard">Hard</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="game-details">
+      <input type="checkbox" name="sound" id="sound">
+      <label for="sound">Sound on</label>
+      <p class="hint"><span>Hint:</span> Use W, S, D, A or the arrows to move. Press spacebar to pause the game.</p>
+      <p class="score-txt"><span>Score:</span> <span class="current-score">0</span></p>
+    </div>
+    <!-- AUDIO FILES !-->
+    <audio id="eating" src="http://alexsalov.com/assets/snake/bite.mp3" preload="auto"></audio>
+    <audio id="hit_wall" src="http://alexsalov.com/assets/snake/hit_wall.mp3" preload="auto"></audio>
+    <audio id="pain" src="http://alexsalov.com/assets/snake/pain.mp3" preload="auto"></audio>
+    <audio id="snake_background" src="http://alexsalov.com/assets/snake/snake_background.mp3" preload="auto" loop></audio>
   </section>
   <!-- Tic tac toe Javascript logic -->
   <script src="tictactoe.js"></script>
+  <script src="snake.js"></script>
 </body>
 </html>

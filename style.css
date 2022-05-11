@@ -1,54 +1,98 @@
+/* General styles */
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
 
-html, body {
+* {
     margin: 0;
     padding: 0;
+}
+
+body {
     font-family: 'Rationale', sans-serif;
+    background-color: #FDFAF6;
+    color: #036666;
+    max-height: 100vh;
+    overflow: scroll;
 }
 
-.code-ref {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    text-decoration: underline;
-    cursor: pointer;
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 3fr);
+    width: 100%;
+    height: 52px;
+    z-index: 3;
+    background: #FDFAF6;
+    box-shadow: 0px 4px 4px 0px rgba(186,126,126,0.6);
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(186,126,126,0.6);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(186,126,126,0.6);
 }
 
-.tic-tac-toe-container {
-    position: relative;
+header a {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    height: 100vh;
-    width: 100%;
-    background: #4cc9f0;
-    color: white;
+    font-size: 20px;
+    color: #036666;
 }
 
+header a:hover {
+    color: #51CB20;
+    font-weight: 700;
+}
+
+header a span {
+    margin-left: 8px;
+}
+
+
+
+/* Styles for core elements */
+/* Github Link to code */
 .game--title {
-    font-size: 52px;
+    font-size: 48px;
     font-weight: 700;
     line-height: 52px;
-    margin: 24px;
+    margin: 1rem;
+    text-align: center;
 }
 
+
+/* Tic tac toe styles */
+/* Tic tac toe container */
+.tic-tac-toe-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    align-items: center;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+/* Game container */
 .game--container {
     display: grid;
     grid-template-columns: repeat(3, auto);
     border-radius: 12px;
+    width: fit-content;
+    margin: 2rem auto;
 }
 
-.game--status {
-    font-size: 32px;
-    margin: 16px;
-    line-height: 4px;
+.game--board {
+    text-align: center;
+    width: 30%;
 }
 
+.game--controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Button Restart game */
 .game--restart {
     height: 40px;
     width: 200px;
@@ -61,30 +105,44 @@ html, body {
     justify-content: center;
     align-items: center;
     background: #f72585;
-    color: white;
+    color: #FDFAF6;
     border: none;
     outline: none;
 }
 
 .game--restart:hover {
-    background: white;
+    background: #FDFAF6;
     color: #7400b8;
     font-weight: 600;
 }
 
+/* Format for each cell in the game */
 .cell {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 150px;
-    box-shadow: 0 0 0 2px #ffffff;
-    border: 2px solid #ffffff;
+    width: 130px;
+    height: 130px;
+    box-shadow: 0 0 0 2px #f72585;
+    border: 2px solid #f72585;
     cursor: pointer;
     font-size: 60px;
-    border-radius: 12px;
+    border-radius: 12px 0 12px 0;
 }
 
+/* Formating text about turns and end of the game */
+.player {
+    color:#f72585;
+    margin: 8px;
+    border: 3px solid f72585;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: f72585;
+    font-weight: 500;
+}
+
+
+/* Mobile styles */
 @media (max-width: 800px) {
     .cell {
         width: 80px;
@@ -92,20 +150,155 @@ html, body {
     }
 }
 
+
+/* Icons styles */
 .fa-circle {
-    color: #3a0ca3;
+    color: #036666;
 }
 
 .fa-xmark {
-    color: #b5179e;
+    color: #ff206e;
 }
 
-.player {
-    color:#f72585;
-    margin: 8px;
-    border: 3px solid white;
-    border-radius: 4px;
-    padding: 4px;
-    background-color: white;
-    font-weight: 500;
-}
+/* Snake styles */
+
+canvas {
+    background-color: #036666;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  input[type=checkbox] {
+    margin: 5px 5px 0 0;
+  }
+  
+  label,
+  .game-btn {
+    cursor: pointer;
+  }
+  
+  canvas,
+  .game-area,
+  .overlay {
+    width: 600px;
+    position: relative;
+  }
+  
+  canvas,
+  .game-area,
+  .overlay {
+    height: 360px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .snake-container {
+      margin: auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .snake-container,
+  .buttons,
+  .difficulty {
+    width: 100%;
+    margin: auto;
+  }
+  
+  .game-area,
+  .game-btn,
+  .game-details {
+    position: relative;
+  }
+  
+  .game-area,
+  .game-details {
+    margin: 2rem auto;
+  }
+  
+  .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+  }
+  
+  .overlay,
+  .buttons,
+  .difficulty,
+  .score-txt {
+    position: absolute;
+  }
+  
+  .buttons {
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+  
+  .game-btn {
+    border: 2px solid #FDFAF6;
+    border-radius: 5px;
+    width: 200px;
+    line-height: 60px;
+    margin: 15px 0;
+    background: transparent;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  }
+  
+  .game-btn:hover {
+    background: #ff206e;
+    border: 2px solid #ff206e;
+    color: #FDFAF6;
+  }
+  
+  .game-msg {
+    margin: 50px 0 10px;
+    padding: 0 10px;
+  }
+  
+  .hint {
+    margin: 8px 0;
+    font-size: 0.8em;
+  }
+  
+  .difficulty {
+    bottom: 50px;
+  }
+  
+  #finalScore,
+  .difficulty p {
+    margin: 5px 0;
+  }
+  
+  .overlay p,
+  .game-btn,
+  .difficulty div {
+    color: #fff;
+    font-size: 1.25em;
+    text-align: center;
+  }
+  
+  .score-txt {
+    right: 0;
+    top: 1px;
+    margin: 0;
+  }
+  
+  .hint span,
+  .score-txt span:first-child {
+    font-weight: bold;
+  }
+  
+  .radio-field {
+    margin: 0 10px;
+    display: inline-block;
+  }
+  
+  .radio-field label {
+    font-size: 0.75em;
+  }
